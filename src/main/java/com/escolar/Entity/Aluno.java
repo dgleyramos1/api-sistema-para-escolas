@@ -2,7 +2,6 @@ package com.escolar.Entity;
 
 
 
-import com.escolar.Repository.AlunoRepo;
 
 import javax.persistence.*;
 
@@ -47,5 +46,13 @@ public class Aluno{
 
     public void setIdade(Integer idade) {
         this.idade = idade;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

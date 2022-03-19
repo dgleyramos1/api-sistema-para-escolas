@@ -5,9 +5,10 @@ import javax.persistence.*;
 
 @Entity
 public class Endereco {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.TABLE )
+    @Column(name = "id", nullable = false)
     private Long id;
     private String rua;
     private String bairro;
@@ -20,9 +21,6 @@ public class Endereco {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Endereco() {
     }

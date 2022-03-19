@@ -15,9 +15,11 @@ import java.util.Optional;
 public class ControllerAluno {
 
     private final AlunoRepo repository;
+    private final EnderecoRepo enderecoRepository;;
 
-    public ControllerAluno(AlunoRepo repository) {
+    public ControllerAluno(AlunoRepo repository, EnderecoRepo enderecoRepository) {
         this.repository = repository;
+        this.enderecoRepository = enderecoRepository;
     }
 
     @GetMapping("/aluno")
@@ -40,10 +42,14 @@ public class ControllerAluno {
             return new ResponseEntity<>(alunoUnid, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
     @PostMapping("/aluno")
     public Aluno newAluno(@RequestBody Aluno novoAluno){
+        enderecoRepository.save(novoAluno.getEndereco());
         return repository.save(novoAluno);
     }
+
+
 }
